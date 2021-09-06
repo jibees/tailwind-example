@@ -11,7 +11,7 @@ module.exports = {
     ],
     options: {
       defaultExtractor: (content) =>
-        content.match(/[^%#<>"{\.'`\s]*[^%#<>"{}\.'`\s:]/g) || [],
+        content.match(/[^%#=<>"{\.'`\s]*[^%#=<>"{}\.'`\s:]/g) || [],
     },
   },
   darkMode: false, // or 'media' or 'class'
