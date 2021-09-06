@@ -1,24 +1,37 @@
-# README
+Run
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`npx tailwindcss -o tailwind.css`
 
-Things you may want to cover:
 
-* Ruby version
+to see that the generated CSS file contains:
 
-* System dependencies
+```css
 
-* Configuration
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
 
-* Database creation
+.text-yellow-50 {
+  --tw-text-opacity: 1;
+  color: rgba(255, 251, 235, var(--tw-text-opacity));
+}
 
-* Database initialization
+.text-yellow-100 {
+  --tw-text-opacity: 1;
+  color: rgba(254, 243, 199, var(--tw-text-opacity));
+}
+```
+and nothing about `.text-lg`
 
-* How to run the test suite
+The view file contains:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```haml
+%h1 Articles#index
+- name = "Find me in app/views/articles/index.html.erb"
+%p.text-yellow-50.text-lg=name
+%p.text-yellow-100.text-sm
+  = name
+ ```
+ 
+The `text-lg` is not parsed by tailwind, probably due to the following `=name` which is a valid syntax in haml.
